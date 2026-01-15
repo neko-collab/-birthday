@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Nazifa ❤️</title>
+<style>
+  :root{
+    --bg1:#ffe2ec;
+    --bg2:#f7f1ff;
+    --card:#ffffff;
+    --text:#2b2b2b;
+    --accent:#ff3b7a;
+  }
+
+  /* Reset-ish */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    color:var(--text);
+    background: radial-gradient(1000px 700px at 20% 10%, var(--bg1), transparent 70%),
+                radial-gradient(900px 600px at 80% 90%, var(--bg2), transparent 70%),
+                linear-gradient(180deg, #fff, #fff);
+    display:grid;
+    place-items:center;
+    padding:24px;
+  }
+
+  .card{
+    width:min(540px, 92vw);
+    background:var(--card);
+    border-radius:28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.08), 0 2px 10px rgba(0,0,0,.06);
+    padding:28px 26px 36px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  h1{
+    margin:0 0 8px;
+    font-weight:800;
+    letter-spacing:.2px;
+  }
+  .subtitle{
+    margin:0 0 18px;
+    opacity:.75;
+    font-size:.98rem;
+  }
+
+  /* Hidden checkbox controls everything */
+  #open{
+    position:absolute;
+    width:1px; height:1px;
+    overflow:hidden; clip:rect(0 0 0 0);
+    white-space:nowrap; clip-path:inset(50%);
+    border:0; padding:0; margin:-1px;
+  }
+
+  /* Big clicky heart button */
+  .heart{
+    --size: 110px;
+    width:var(--size);
+    height:var(--size);
+    display:inline-grid;
+    place-items:center;
+    margin:14px auto 8px;
+    cursor:pointer;
+    position:relative;
+    transition: transform .2s ease, filter .2s ease;
+    filter: drop-shadow(0 6px 10px rgba(255,59,122,.25));
+  }
+  .heart .shape{
+    width:70px; height:70px;
+    position:relative;
+    transform: rotate(-45deg) scale(1);
+    transition: transform .25s ease;
+    background: var(--accent);
+    border-radius: 18px;
+  }
+  .heart .shape:before,
+  .heart .shape:after{
+    content:"";
+    position:absolute;
+    background: var(--accent);
+    width:70px; height:70px;
+    border-radius:50%;
+  }
+  .heart .shape:before{ left:-35px; top:0; }
+  .heart .shape:after{ top:-35px; left:0; }
+
+  .hint{
+    font-size:.92rem;
+    opacity:.7;
+  }
+
+  .heart:hover{ transform: translateY(-2px) scale(1.03); }
+  .heart:active{ transform: translateY(0) scale(.98); }
+
+  /* The letter that reveals on click */
+  .letter{
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition: max-height .6s ease, opacity .4s ease .15s, transform .6s ease;
+    transform: translateY(8px);
+  }
+  .paper{
+    margin:16px auto 0;
+    text-align:left;
+    background:linear-gradient(#fff, #fff) padding-box,
+               repeating-linear-gradient(180deg, transparent 0 26px, rgba(255,59,122,.08) 26px 27px) border-box;
+    border:1px solid rgba(255,59,122,.25);
+    border-radius:18px;
+    padding:18px 18px 20px;
+    line-height:1.55;
+  }
+  .paper p{ margin:.2rem 0 .8rem; }
+  .sig{ margin-top:10px; font-weight:600; }
+
+  /* Cute confetti hearts when opened */
+  .confetti{
+    position:absolute; inset:0;
+    pointer-events:none;
+    opacity:0; transition:opacity .25s ease;
+  }
+  .confetti span{
+    position:absolute;
+    font-size:18px;
+    animation: floatUp 1.2s ease forwards;
+    opacity:0;
+  }
+  @keyframes floatUp{
+    0%{ transform: translateY(12px) scale(.6) rotate(-10deg); opacity:0; }
+    40%{ opacity:1; }
+    100%{ transform: translateY(-80px) scale(1) rotate(8deg); opacity:0; }
+  }
+
+  /* Toggle states when checked */
+  #open:checked ~ label .shape{ transform: rotate(-45deg) scale(1.08); }
+  #open:checked ~ .letter{
+    max-height:500px;
+    opacity:1;
+    transform: translateY(0);
+  }
+  #open:checked ~ .confetti{ opacity:1; }
+  /* Staggered bursts */
+  #open:checked ~ .confetti span:nth-child(1){ left:12%; bottom:34%; animation-delay:.05s }
+  #open:checked ~ .confetti span:nth-child(2){ left:22%; bottom:30%; animation-delay:.1s }
+  #open:checked ~ .confetti span:nth-child(3){ left:33%; bottom:36%; animation-delay:.15s }
+  #open:checked ~ .confetti span:nth-child(4){ left:45%; bottom:28%; animation-delay:.2s }
+  #open:checked ~ .confetti span:nth-child(5){ left:55%; bottom:34%; animation-delay:.25s }
+  #open:checked ~ .confetti span:nth-child(6){ left:66%; bottom:31%; animation-delay:.3s }
+  #open:checked ~ .confetti span:nth-child(7){ left:76%; bottom:35%; animation-delay:.35s }
+  #open:checked ~ .confetti span:nth-child(8){ left:18%; bottom:24%; animation-delay:.18s }
+  #open:checked ~ .confetti span:nth-child(9){ left:38%; bottom:22%; animation-delay:.26s }
+  #open:checked ~ .confetti span:nth-child(10){ left:58%; bottom:23%; animation-delay:.32s }
+  #open:checked ~ .confetti span:nth-child(11){ left:72%; bottom:21%; animation-delay:.38s }
+  #open:checked ~ .confetti span:nth-child(12){ left:84%; bottom:19%; animation-delay:.44s }
+
+  /* Small footer */
+  .footer{
+    margin-top:14px;
+    font-size:.8rem;
+    opacity:.6;
+  }
+</style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">Nazifa, tap the heart 💖</h1>
+    <p class="subtitle">I made this little page to tell you something.</p>
+
+    <!-- Controller -->
+    <input id="open" type="checkbox" aria-controls="letter" aria-expanded="false" />
+
+    <!-- Clickable Heart -->
+    <label class="heart" for="open">
+      <div class="shape" aria-hidden="true"></div>
+    </label>
+    <div class="hint">click to open</div>
+
+    <!-- Hidden Letter -->
+    <section id="letter" class="letter" aria-live="polite">
+      <div class="paper" role="article">
+        <p>Dear Nazifa,</p>
+        <p>
+          Happiest Birthday to my baby. You are way too special for me. I am so lucky to have you in my life. 
+          You are the most beautiful, caring and loving person I ever met and known. Thank you for being you. Thank you for everything.
+        </p>
+        <p>
+          I’m grateful to have you. You are the prettiest girl I ever sawwwww.
+          Loads of love to one and only NAZIFAAAAAAAAAAAAAAAAAAA.
+          hahahaha I love you. I love you so much girl. You are someone I look upto. You are someone I adore so much.
+          You are worth every flowers, every stars in the whole world.I love you. Happiest birthday to you baby.
+        </p>
+        <p class="sig">— from me, with love</p>
+      </div>
+    </section>
+
+    <!-- Confetti hearts -->
+    <div class="confetti" aria-hidden="true">
+      <span>💗</span><span>💖</span><span>💕</span><span>💗</span><span>💞</span><span>💖</span>
+      <span>💗</span><span>💘</span><span>💓</span><span>💗</span><span>💞</span><span>💖</span>
+    </div>
+
+    <div class="footer">Built with only HTML + CSS · toggle heart to open/close</div>
+  </main>
+</body>
+</html>
